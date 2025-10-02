@@ -20,7 +20,7 @@
     "formidable": "^3.5.4",
     "google-libphonenumber": "^3.2.43",
     "mammoth": "^1.11.0",
-    "pdf-parse": "^1.1.1",
+    "pdf-parse": "^2.1.1",
     "pdfjs-dist": "^5.4.149",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
