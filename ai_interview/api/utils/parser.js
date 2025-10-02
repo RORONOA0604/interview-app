@@ -1,5 +1,8 @@
 import pdf from "pdf-parse";
-import { PhoneNumberUtil, PhoneNumberFormat } from "google-libphonenumber";
+// import { PhoneNumberUtil, PhoneNumberFormat } from "google-libphonenumber";
+import pkg from "google-libphonenumber";
+
+const { PhoneNumberUtil, PhoneNumberFormat } = pkg;
 
 const phoneUtil = PhoneNumberUtil.getInstance();
 
