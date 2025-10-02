@@ -1,0 +1,34 @@
+{
+  "full_stack_developer": [
+    { "difficulty": "Easy", "question": "What is the difference between `let`, `const`, and `var` in JavaScript?" },
+    { "difficulty": "Easy", "question": "Explain the box model in CSS." },
+    { "difficulty": "Medium", "question": "What are React Hooks? Can you name a few and explain their purpose?" },
+    { "difficulty": "Medium", "question": "Describe the concept of 'middleware' in the context of Node.js/Express." },
+    { "difficulty": "Hard", "question": "How does the virtual DOM work in React, and what are its benefits?" },
+    { "difficulty": "Hard", "question": "Explain the event loop in Node.js." }
+  ],
+  "ml_engineer": [
+    { "difficulty": "Easy", "question": "What is the difference between supervised and unsupervised learning?" },
+    { "difficulty": "Easy", "question": "Explain what a confusion matrix is." },
+    { "difficulty": "Medium", "question": "Describe the bias-variance tradeoff." },
+    { "difficulty": "Medium", "question": "What is a convolutional neural network (CNN) and what is it typically used for?" },
+    { "difficulty": "Hard", "question": "Explain how backpropagation works in a neural network." },
+    { "difficulty": "Hard", "question": "What are transformer models and the concept of 'attention'?" }
+  ],
+  "software_developer": [
+    { "difficulty": "Easy", "question": "What is the difference between an array and a linked list?" },
+    { "difficulty": "Easy", "question": "Explain the concept of Object-Oriented Programming (OOP)." },
+    { "difficulty": "Medium", "question": "What is a REST API? Describe the main HTTP verbs." },
+    { "difficulty": "Medium", "question": "What is the difference between SQL and NoSQL databases?" },
+    { "difficulty": "Hard", "question": "Explain the SOLID principles of object-oriented design." },
+    { "difficulty": "Hard", "question": "Describe a situation where you would use a hash table." }
+  ],
+  "web_developer": [
+    { "difficulty": "Easy", "question": "What does HTML stand for and what is its purpose?" },
+    { "difficulty": "Easy", "question": "What are the three main ways to apply CSS to a webpage?" },
+    { "difficulty": "Medium", "question": "What is the Document Object Model (DOM)?" },
+    { "difficulty": "Medium", "question": "Explain the difference between `==` and `===` in JavaScript." },
+    { "difficulty": "Hard", "question": "What is Cross-Site Scripting (XSS) and how can you prevent it?" },
+    { "difficulty": "Hard", "question": "Describe the purpose of `localStorage` and `sessionStorage`." }
+  ]
+}

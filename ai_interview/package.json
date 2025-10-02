@@ -10,15 +10,23 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@reduxjs/toolkit": "^2.9.0",
+    "@supabase/supabase-js": "^2.58.0",
+    "@tailwindcss/vite": "^4.1.13",
+    "@xenova/transformers": "^2.17.2",
     "antd": "^5.27.4",
     "docx": "^9.5.1",
+    "mammoth": "^1.11.0",
     "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^5.4.149",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-dropzone": "^14.3.8",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.3",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
