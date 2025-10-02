@@ -35,3 +35,4 @@ dist-ssr
 
 # Build files
 /dist
+.vercel

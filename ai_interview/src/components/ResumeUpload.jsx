@@ -1,4 +1,3 @@
-// src/components/ResumeUpload.jsx
 import React, { useState } from 'react';
 import { Upload, Button, Alert, Spin, Form, Input } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
@@ -15,24 +14,28 @@ export default function ResumeUpload() {
     setError('');
     setLoading(true);
 
-    // Create a FormData object to send the file
     const formData = new FormData();
     formData.append('resume', file);
 
-     try {
-      // Use the FastAPI backend URL for local development
-      // For production, this will be '/api/extract-pdf'
-      const apiUrl = 'http://127.0.0.1:8000/api/extract-pdf';
+    try {
+      // ✅ FIX: Changed the URL to a relative path.
+      // This will correctly call your new Node.js backend both locally (with `vercel dev`)
+      // and when deployed on Vercel.
+      const apiUrl = '/api/extract-pdf';
+      
       const response = await fetch(apiUrl, {
         method: 'POST',
         body: formData,
       });
 
+      const responseData = await response.json();
+
       if (!response.ok) {
-        throw new Error('Failed to process resume');
+        // Use the error message from the backend if it exists
+        throw new Error(responseData.error || 'Failed to process resume');
       }
       
-       const extractedData = await response.json();
+      const extractedData = responseData;
 
       dispatch(setResumeFileMeta({ name: file.name, size: file.size, type: file.type }));
       dispatch(setCandidateField({ key: 'name', value: extractedData.name || '' }));
