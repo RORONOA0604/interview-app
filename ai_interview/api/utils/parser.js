@@ -1,19 +1,14 @@
-import pdf from "pdf-parse";
-// import { PhoneNumberUtil, PhoneNumberFormat } from "google-libphonenumber";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 import pkg from "google-libphonenumber";
-
 const { PhoneNumberUtil, PhoneNumberFormat } = pkg;
-
 const phoneUtil = PhoneNumberUtil.getInstance();
 
 function extractName(text) {
   const lines = text.split("\n").slice(0, 10);
   const indicators = ["summary", "objective", "experience", "education", "skills", "projects", "contact"];
-
   for (let line of lines) {
     line = line.trim();
     if (!line) continue;
-
     const words = line.split(/\s+/);
     if (words.length >= 2 && words.length <= 4) {
       const isTitleCase = words.every(
@@ -47,17 +42,25 @@ function extractPhone(text) {
 
 export async function parseResume(buffer) {
   try {
-    const data = await pdf(buffer);
-    const text = data.text;
-
+    const loadingTask = pdfjsLib.getDocument({ data: buffer });
+    const pdfDocument = await loadingTask.promise;
+    
+    let text = "";
+    for (let i = 1; i <= pdfDocument.numPages; i++) {
+      const page = await pdfDocument.getPage(i);
+      const content = await page.getTextContent();
+      const pageText = content.items.map(item => item.str).join(" ");
+      text += pageText + "\n";
+    }
+    
     if (!text) {
       return { error: "Could not extract text from PDF" };
     }
-
+    
     const name = extractName(text);
     const email = extractEmail(text);
     const phone = extractPhone(text);
-
+    
     return { name, email, phone };
   } catch (e) {
     console.error("Parse error:", e);
