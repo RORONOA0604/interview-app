@@ -1,7 +1,7 @@
 import formidable from "formidable";
 import fs from "fs";
 // ✅ FIX: Correct the import path to point to the root utils folder
-import { parseResume } from "../utils/parser.js";
+import { parseResume } from "./utils/parser.js";
 
 export const config = {
   api: {
