@@ -2,6 +2,8 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from parser import ResumeParser  # Your local parser for name, email, etc.
+import uvicorn
+import os
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -45,3 +47,7 @@ async def root():
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Render provides $PORT
+    uvicorn.run("api.main:app", host="0.0.0.0", port=port)
