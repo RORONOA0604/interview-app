@@ -1,4 +1,4 @@
-import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
+import { getDocumentProxy } from "unpdf";
 import pkg from "google-libphonenumber";
 const { PhoneNumberUtil, PhoneNumberFormat } = pkg;
 const phoneUtil = PhoneNumberUtil.getInstance();
@@ -42,15 +42,14 @@ function extractPhone(text) {
 
 export async function parseResume(buffer) {
   try {
-    const loadingTask = pdfjsLib.getDocument({ data: buffer });
-    const pdfDocument = await loadingTask.promise;
+    const pdf = await getDocumentProxy(buffer);
+    const { totalPages } = pdf;
     
     let text = "";
-    for (let i = 1; i <= pdfDocument.numPages; i++) {
-      const page = await pdfDocument.getPage(i);
-      const content = await page.getTextContent();
-      const pageText = content.items.map(item => item.str).join(" ");
-      text += pageText + "\n";
+    for (let i = 1; i <= totalPages; i++) {
+      const page = await pdf.getPage(i);
+      const pageText = await page.getTextContent();
+      text += pageText.items.map(item => item.str).join(" ") + "\n";
     }
     
     if (!text) {

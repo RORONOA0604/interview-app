@@ -23,6 +23,7 @@ export default function ResumeUpload() {
       // Use the FastAPI backend URL for local development
       // For production, this will be '/api/extract-pdf'
       const apiUrl = 'https://interview-app-teal-seven.vercel.app/api/extract-pdf';
+      // const apiUrl = 'http://127.0.0.1:8000/api/extract-pdf';
       const response = await fetch(apiUrl, {
         method: 'POST',
         body: formData,
