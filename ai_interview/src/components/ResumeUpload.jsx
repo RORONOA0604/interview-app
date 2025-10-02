@@ -21,7 +21,7 @@ export default function ResumeUpload() {
       // ✅ FIX: Changed the URL to a relative path.
       // This will correctly call your new Node.js backend both locally (with `vercel dev`)
       // and when deployed on Vercel.
-      const apiUrl = '/api/extract-pdf';
+      const apiUrl = 'https://interview-app-8pny.onrender.com/api/extract-pdf';
       
       const response = await fetch(apiUrl, {
         method: 'POST',

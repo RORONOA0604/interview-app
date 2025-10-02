@@ -6,16 +6,16 @@ from parser import ResumeParser  # Your local parser for name, email, etc.
 # Initialize FastAPI app
 app = FastAPI()
 
-# Configure CORS to allow your frontend to communicate with this backend
+# --- CORS Configuration ---
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For development. Change to your Vercel URL in production.
+    allow_origins=["*"],  # In production, replace with specific origins like ["http://localhost:3000", "https://yourdomain.com"]
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
 )
 
-# --- Endpoint 1: PDF Parsing (This is the only endpoint left) ---
+# --- Endpoint 1: PDF Parsing ---
 @app.post("/api/extract-pdf")
 async def extract_pdf(resume: UploadFile = File(...)):
     if resume.content_type != 'application/pdf':
